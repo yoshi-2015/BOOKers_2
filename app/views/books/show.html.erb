@@ -1,0 +1,36 @@
+<!-- book_index画面 -->
+
+<!-- header -->
+<%= render 'books/header', books: @books %>
+
+<h1>Books detail</h1>
+
+<!-- 投稿一覧表 -->
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <td>
+          <%= link_to "edit", edit_book_path(book) %>
+          <%= link_to "delete" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- User info -->
+
+<!-- New book -->
+
+<!-- footer -->
