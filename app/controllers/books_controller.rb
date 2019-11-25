@@ -1,10 +1,7 @@
 class BooksController < ApplicationController
   # before_action :authenticate_user!
-  def index
-    # 空のモデル
+  def new
     @book = Book.new
-    # 全件取得して欲しい
-    @books = Book.all
   end
   def create
     @book = Book.new(book_params)
@@ -17,8 +14,15 @@ class BooksController < ApplicationController
     end
   end
 
-  def show
+  def index
+    @book = Book.new
+    # 全件取得して欲しい
     @books = Book.all
+  end
+
+  def show
+    @book = Book.new
+    @books = Book.find(params[:id])
   end
 
   def edit
@@ -27,12 +31,16 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      @books = Book.all
-      render :show
+      redirect_to book_path(@book)
     else
-      @books = Book.all
       render :edit
     end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
   end
 
   private

@@ -1,19 +1,27 @@
-<!-- header -->
-<%= render 'books/header', books: @books %>
+<!-- 編集画面 -->
+<table class="table table-striped">
 
-<h1>Editing Book</h1>
-<%= form_for(@book) do |f| %>
+  <!-- header -->
 
-  <h4>Title</h4>
-  <%= f.text_field :title %>
 
-  <h4>Body</h4>
-  <%= f.text_field :body %>
+  <%= render 'books/header', books: @books %>
 
-  <br><%= f.submit 'Create Book' %></br>
+  <h1>Editing Book</h1>
+  <%= form_for(@book) do |f| %>
 
-<% end %>
-<h4>
-  <%= link_to "show", book_path %>
-  <%= link_to "back", books_path %>
-</h4>
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+
+    <h4>Body</h4>
+    <%= f.text_field :body %>
+
+    <br><%= f.submit 'Create Book' %></br>
+
+  <% end %>
+  <h4>
+    <%= link_to "show", book_path %>
+    <%= link_to "back", books_path %>
+  </h4>
+
+
+</table>

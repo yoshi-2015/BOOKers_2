@@ -1,4 +1,5 @@
-<!-- 全userの投稿画面 -->
+<!-- 全ユーザーの一覧リスト -->
+
 <!-- header -->
 <%= render 'books/header', books: @books %>
 
@@ -13,22 +14,22 @@
       <table>
         <thead>
         <tr>
+          <th>image</th>
+          <th>name</th>
           <th></th>
-          <th>Title</th>
-          <th>Body</th>
         </tr>
         </thead>
 
         <tbody>
-          <% @books.each do |book| %>
+          <% @users.each do |user| %>
             <tr>
               <td></td>
               <td>
-                <%= link_to book_path(book.id) do %>
-                  <%= book.title %>
-                <% end %>
+                  <%= user.name %>
               </td>
-              <td><%= book.body %></td>
+              <td>
+                <%= link_to "show", user_path(user.id) %>
+              </td>
             </tr>
           <% end %>
         </tbody>

@@ -1,4 +1,5 @@
-<!-- 各userの投稿画面（ログインしているユーザーの） -->
+<!-- 各ユーザーの投稿一覧画面（ログインしているユーザーの） -->
+
 <!-- header -->
 <%= render 'books/header', books: @books %>
 
@@ -8,9 +9,9 @@
     <div class="col-lg-3" style="background-color: orange;">
       <%= render 'books/new', books: @books %>
     </div>
+    <!-- 投稿一覧表 -->
     <div class="col-lg-9">
       <h1>Books detail</h1>
-      <!-- 投稿一覧表 -->
       <table>
         <thead>
         <tr>
@@ -21,16 +22,16 @@
         </thead>
 
         <tbody>
+          <% @books.each do |book| %>
             <tr>
-              <td><%= @books.title %></td>
-              <td><%= @books.body %></td>
               <td>
-                <%= link_to "edit", edit_book_path(@books) %>
-                <!-- if @book.user == current_user -->
-                  <%= link_to "delete", book_path, method: :delete, "data-confirm" => "本当に削除しますか？" %>
-                <!-- end  -->
+                <%= link_to book_path(book.id) do %>
+                  <%= book.title %>
+                <% end %>
               </td>
+              <td><%= book.body %></td>
             </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
