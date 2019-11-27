@@ -5,17 +5,18 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-3" style="background-color: orange;">
-      <%= render 'books/new', books: @books %>
+    <!-- サイドバー -->
+    <div class="col-xs-3">
+      <%= render 'users/new'%>
     </div>
-    <div class="col-lg-9">
-      <h1>Books</h1>
-      <!-- 投稿一覧表 -->
-      <table>
+    <!-- 登録User一覧 -->
+    <div class="col-xs-9">
+      <h1>Users</h1>
+      <table class="table">
         <thead>
         <tr>
-          <th>image</th>
-          <th>name</th>
+          <!-- <th>user_image</th>
+          <th>user_name</th> -->
           <th></th>
         </tr>
         </thead>
@@ -36,6 +37,8 @@
       </table>
     </div>
   </div>
+<!-- footer -->
+<%= render 'books/footer', books: @books %>
 </div>
 
-<%= render 'books/footer', books: @books %>
+

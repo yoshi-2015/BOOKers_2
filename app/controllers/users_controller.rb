@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   private
-    def book_params
-    params.require(:user).permit(:name)
+    def user_params
+    params.require(:user).permit(:name,:email)
   end
 end

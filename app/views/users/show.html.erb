@@ -1,3 +1,4 @@
+
 <!-- 各ユーザーの投稿一覧画面（ログインしているユーザーの） -->
 
 <!-- header -->
@@ -6,18 +7,17 @@
 <div class="container">
   <div class="row">
     <!-- サイドバー -->
-    <div class="col-lg-3" style="background-color: orange;">
-      <%= render 'books/new', books: @books %>
+    <div class="col-xs-3">
+      <%= render 'books/new2', user: @user %>
     </div>
     <!-- 投稿一覧表 -->
-    <div class="col-lg-9">
-      <h1>Books detail</h1>
-      <table>
+    <div class="col-xs-9">
+      <h2>Books detail</h2>
+      <table class="table">
         <thead>
         <tr>
           <th>Title</th>
           <th>Body</th>
-          <th></th>
         </tr>
         </thead>
 
@@ -36,7 +36,6 @@
       </table>
     </div>
   </div>
-</div>
-
 <!-- footer -->
 <%= render 'books/footer', books: @books %>
+</div>
