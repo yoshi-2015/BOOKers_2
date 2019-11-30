@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :books
   root 'books#top'
   resources :users
+  resources :home, only: [:index]
+  resources :users, only: [:show, :edit]
 end

@@ -1,31 +1,30 @@
-
+<!-- ログインしているユーザー情報の表示 -->
 
 <table class="table table-striped">
   <h2>User info</h2>
-  <div>
-    <p>img</p>
-  </div>
   <table class="table">
     <thead>
+      　<tr>
+        <!-- 画像組み込む -->
+        <%= attachment_image_tag user,:profile_image, :fill, 100, 100, format: 'jpeg' %>
+        </tr>
         <tr>
           <th>name</th>
           <th>
-              <%= current_user.name %>
+            <%= user.name %>
+          </th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th>
+            <%= user.introduction %>
           </th>
         </tr>
     </thead>
   </table>
-  <table class="table">
-    <thead>
-        <tr>
-          <th>introduction</th>
-          <th><!--  @user.introduction %> --></th>
-        </tr>
-    </thead>
-  </table>
 
   <div>
-    <p><%= link_to 'setting', books_path, class: "btn btn-default" %></p>
+    <p><%= link_to 'setting', edit_user_path(user), class: "btn btn-default" %></p>
   </div>
 
   <h2>NEW book</h2>

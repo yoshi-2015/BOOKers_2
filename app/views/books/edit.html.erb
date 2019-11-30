@@ -1,27 +1,29 @@
 <!-- 編集画面 -->
-<table class="table table-striped">
+<!-- header -->
+<%= render 'books/header', books: @books %>
 
-  <!-- header -->
+<h1>Editing Book</h1>
+<% if @book.errors.any? %>
+  <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
 
-
-  <%= render 'books/header', books: @books %>
-
-  <h1>Editing Book</h1>
-  <%= form_for(@book) do |f| %>
-
-    <h4>Title</h4>
-    <%= f.text_field :title %>
-
-    <h4>Body</h4>
-    <%= f.text_field :body %>
-
-    <br><%= f.submit 'Create Book' %></br>
-
+  <ul>
+  <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
   <% end %>
-  <h4>
-    <%= link_to "show", book_path %>
-    <%= link_to "back", books_path %>
-  </h4>
+  </ul>
+<% end %>
 
+<%= form_for(@book) do |f| %>
 
-</table>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+
+  <br><%= f.submit 'Create Book' %></br>
+<% end %>
+<h4>
+  <%= link_to "show", book_path %>
+  <%= link_to "back", books_path %>
+</h4>
