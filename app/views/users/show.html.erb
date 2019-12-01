@@ -4,6 +4,12 @@
 <!-- header -->
 <%= render 'books/header', books: @books %>
 
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="row">
     <!-- サイドバー -->
@@ -27,7 +33,7 @@
             <tr>
               <td>
                 <!-- 画像組み込む -->
-                <%= attachment_image_tag @user,:profile_image, :fill, 100, 100, format: 'jpeg' %>
+                <%= attachment_image_tag @user,:profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
               </td>
               <td>
                 <%= link_to book_path(book.id) do %>

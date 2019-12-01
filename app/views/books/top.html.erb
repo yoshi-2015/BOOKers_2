@@ -2,9 +2,19 @@
 <!-- header -->
 <%= render 'books/header', books: @books %>
 
-<h1>Tops#top</h1>
-<%= link_to "新規登録", new_user_registration_path %>
-<%= link_to "ログイン", new_user_session_path %>
+<div class="container">
+  <div class="row">
 
-<!-- footer -->
-<%= render 'books/footer', books: @books %>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <h1>Tops#top</h1>
+    <%= link_to "新規登録", new_user_registration_path %>
+    <%= link_to "ログイン", new_user_session_path %>
+  </div>
+  <!-- footer -->
+  <%= render 'books/footer', books: @books %>
+</div>

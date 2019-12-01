@@ -2,6 +2,12 @@
 <!-- header -->
 <%= render 'books/header', books: @books %>
 
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="row">
     <!-- サイドバー -->
@@ -15,20 +21,20 @@
         <tbody>
             <tr>
               <td>
-                 <%= attachment_image_tag @user,:profile_image, :fill, 100, 100, format: 'jpeg' %><br>
+                 <%= attachment_image_tag @user,:profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><br>
                  <%= link_to user_path(@user) do %>
                   <%= @user.name %>
                   <% end %>
                 </td>
               <td>
-                <%= link_to book_path(@books) do %>
-                <%= @books.title %>
+                <%= link_to book_path(@book) do %>
+                <%= @book.title %>
                 <% end %>
               </td>
-              <td><%= @books.body %></td>
+              <td><%= @book.body %></td>
               <td>
-                <% if @books.user == current_user %>
-                <%= link_to "edit", edit_book_path(@books) %>
+                <% if @book.user == current_user %>
+                  <%= link_to "edit", edit_book_path(@book) %>
                   <%= link_to "delete", book_path, method: :delete, "data-confirm" => "本当に削除しますか？" %>
                 <% end %>
               </td>

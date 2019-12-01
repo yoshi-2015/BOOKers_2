@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :index, :show]
+  before_action :authenticate_user!, only: [:new, :create, :index, :show ,:edit]
 
   def index
-    @book = Book.new
+    @newbook = Book.new
     @users = User.all
   end
 
   def show
-    @book = Book.new
+    @newbook = Book.new
     @user = User.find(params[:id])
     @books = @user.books
   end
@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:notice] = "編集完了しました！Book was successfully updated."
       redirect_to user_path(@user)
     else
       render :edit
@@ -31,6 +32,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-    params.require(:user).permit(:name, :email, :profile_image_id, :introduction)
+    params.require(:user).permit(:name, :email, :profile_image, :introduction)
   end
 end

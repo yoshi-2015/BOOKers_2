@@ -6,7 +6,7 @@
     <thead>
       　<tr>
         <!-- 画像組み込む -->
-        <%= attachment_image_tag user,:profile_image, :fill, 100, 100, format: 'jpeg' %>
+        <%= attachment_image_tag user,:profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
         </tr>
         <tr>
           <th>name</th>
@@ -28,17 +28,7 @@
   </div>
 
   <h2>NEW book</h2>
-  <%= form_for(@book, url: books_path) do |f| %>
-
-    <% if @book.errors.any? %>
-      <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
-
-      <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    <% end %>
+  <%= form_for(@newbook, url: books_path) do |f| %>
 
     <p>Title</p>
     <%= f.text_field :title %>
