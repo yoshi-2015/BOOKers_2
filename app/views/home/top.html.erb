@@ -1,0 +1,20 @@
+<!-- top画面（ここからsign_in/sigin_upの画面を選択させる） -->
+<!-- header -->
+<%= render 'books/header', books: @books %>
+
+<div class="container">
+  <div class="row">
+
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <h1>Tops#top</h1>
+    <%= link_to "新規登録", new_user_registration_path %>
+    <%= link_to "ログイン", new_user_session_path %>
+  </div>
+  <!-- footer -->
+  <%= render 'books/footer', books: @books %>
+</div>
